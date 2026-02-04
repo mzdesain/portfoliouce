@@ -1,222 +1,278 @@
-    <!DOCTYPE html>
-    <html lang="id" class="scroll-smooth">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Portofolio | Creative Tech & Literacy</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <style>
-            body { font-family: 'Plus Jakarta Sans', sans-serif; }
-            .glass { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
-            .bg-gradient-site { background: radial-gradient(circle at top right, #ecfdf5, #ffffff, #eff6ff); }
-            .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-            .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-        </style>
-    </head>
-    <body class="bg-gradient-site text-slate-900">
-    
-        <nav class="fixed w-full z-50 px-4 py-4">
-            <div class="max-w-5xl mx-auto glass rounded-2xl px-5 py-3 flex justify-between items-center shadow-lg">
-                <span class="font-extrabold text-xl tracking-tighter text-emerald-700">MUZANNI.</span>
-                
-                <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
-                    <a href="#home" class="hover:text-emerald-600 transition">Home</a>
-                    <a href="#about" class="hover:text-emerald-600 transition">Tentang</a>
-                    <a href="#projects" class="hover:text-emerald-600 transition">Karya</a>
-                    <a href="#skills" class="hover:text-emerald-600 transition">Keahlian</a>
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Creative Tech & Literacy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .bg-gradient-site { background: radial-gradient(circle at top right, #ecfdf5, #ffffff, #eff6ff); }
+        .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+        
+        /* Animasi Widget WA */
+        #wa-widget { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .wa-show { transform: scale(1) translateY(0); opacity: 1; visibility: visible; }
+        .wa-hide { transform: scale(0.8) translateY(20px); opacity: 0; visibility: hidden; }
+    </style>
+</head>
+<body class="bg-gradient-site text-slate-900">
+
+    <nav class="fixed w-full z-50 px-4 py-4">
+        <div class="max-w-5xl mx-auto glass rounded-2xl px-5 py-3 flex justify-between items-center shadow-lg">
+            <span class="font-extrabold text-xl tracking-tighter text-emerald-700">MUZANNI.</span>
+            
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
+                <a href="#home" class="hover:text-emerald-600 transition">Home</a>
+                <a href="#about" class="hover:text-emerald-600 transition">Tentang</a>
+                <a href="#projects" class="hover:text-emerald-600 transition">Karya</a>
+                <a href="#skills" class="hover:text-emerald-600 transition">Keahlian</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleWA()" class="hidden sm:block bg-emerald-600 text-white px-5 py-2 rounded-xl text-sm font-bold hover:bg-emerald-700 transition shadow-md shadow-emerald-200">Kontak Saya</button>
+                <button id="menu-btn" class="md:hidden text-slate-600 focus:outline-none">
+                    <i class="fa-solid fa-bars-staggered text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="fixed inset-x-4 top-20 glass rounded-2xl p-6 hidden md:hidden shadow-2xl">
+            <div class="flex flex-col space-y-4 text-center font-bold text-slate-700">
+                <a href="#home" class="mobile-link py-2 border-b border-slate-100">Home</a>
+                <a href="#about" class="mobile-link py-2 border-b border-slate-100">Tentang</a>
+                <a href="#projects" class="mobile-link py-2 border-b border-slate-100">Karya</a>
+                <a href="#skills" class="mobile-link py-2 border-b border-slate-100">Keahlian</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="fixed bottom-6 right-6 z-[60] flex flex-col items-end">
+        <div id="wa-widget" class="wa-hide mb-4 w-72 md:w-80 overflow-hidden rounded-2xl shadow-2xl glass border border-emerald-100">
+            <div class="bg-emerald-600 p-4 flex items-center gap-3">
+                <div class="relative">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX2vuKKmPjV-7dz4Rn5pH0DlfXdO_BOI-MNzofE3tfjs9X_Dlu6QnkvDyGaSOKvwkXbabZaXfTFZx2SHCgRXZkr_qdBxex7irewpekH-SPqygkRXK_nled5WATThPgek8iB8-z2-9O7vRrkIB01Ro3yoN4Rlc88Npdygz1oPzWJN1sIhyphenhyphen72ws-zpa3lnDI/s16000/Gambar%20Portofolio.jpeg" class="w-10 h-10 rounded-full object-cover border-2 border-white" alt="Profil">
+                    <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-emerald-600 rounded-full"></span>
                 </div>
-    
-                <div class="flex items-center gap-4">
-                    <a href="https://wa.me/6285251675143" class="hidden sm:block bg-emerald-600 text-white px-5 py-2 rounded-xl text-sm font-bold hover:bg-emerald-700 transition shadow-md shadow-emerald-200">Kontak Saya</a>
-                    <button id="menu-btn" class="md:hidden text-slate-600 focus:outline-none">
-                        <i class="fa-solid fa-bars-staggered text-xl"></i>
-                    </button>
+                <div>
+                    <h4 class="text-white font-bold text-sm">Muzanni, S.H.</h4>
+                    <p class="text-emerald-100 text-[10px]">Biasanya membalas dalam hitungan menit</p>
+                </div>
+                <button onclick="toggleWA()" class="ml-auto text-white/70 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-4 bg-slate-50/50">
+                <div class="bg-white p-3 rounded-tr-xl rounded-bl-xl rounded-br-xl shadow-sm mb-4">
+                    <p class="text-xs text-slate-600 leading-relaxed">Assalamu'alaikum! Ada yang bisa saya bantu untuk proyek website, buku, atau desain Anda?</p>
+                </div>
+                <textarea id="wa-msg" placeholder="Tulis pesan Anda..." class="w-full p-3 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-500 outline-none resize-none h-20 shadow-inner"></textarea>
+                <button onclick="sendWA()" class="w-full mt-3 bg-emerald-600 text-white py-2.5 rounded-xl font-bold text-xs flex items-center justify-center gap-2 hover:bg-emerald-700 shadow-lg transition">
+                    Kirim Pesan <i class="fa-brands fa-whatsapp text-lg"></i>
+                </button>
+            </div>
+        </div>
+        <button onclick="toggleWA()" class="bg-emerald-500 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-white text-2xl hover:scale-110 transition active:scale-95 border-4 border-white">
+            <i class="fa-brands fa-whatsapp"></i>
+        </button>
+    </div>
+
+    <header id="home" class="pt-40 pb-20 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-1.5 rounded-full text-xs font-bold mb-8 border border-emerald-100 animate-bounce">
+                Available for Projects
+            </div>
+            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
+                Kreativitas Tanpa Batas, <br><span class="text-emerald-600">Bermanfaat</span> Untuk Umat.
+            </h1>
+            <p class="text-slate-500 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                Menyajikan karya melalui baris kode, narasi literasi, dan estetika desain visual.
+            </p>
+        </div>
+    </header>
+
+    <section id="about" class="py-20 px-6 bg-white/40">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/2 relative">
+                <div class="aspect-[4/5] bg-emerald-600 rounded-[2rem] rotate-3"></div>
+                <div class="absolute inset-0 aspect-[4/5] bg-slate-200 rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl transform -rotate-3 hover:rotate-0 transition duration-500">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX2vuKKmPjV-7dz4Rn5pH0DlfXdO_BOI-MNzofE3tfjs9X_Dlu6QnkvDyGaSOKvwkXbabZaXfTFZx2SHCgRXZkr_qdBxex7irewpekH-SPqygkRXK_nled5WATThPgek8iB8-z2-9O7vRrkIB01Ro3yoN4Rlc88Npdygz1oPzWJN1sIhyphenhyphen72ws-zpa3lnDI/s16000/Gambar%20Portofolio.jpeg" alt="Muzanni" class="w-full h-full object-cover">
                 </div>
             </div>
-    
-            <div id="mobile-menu" class="fixed inset-x-4 top-20 glass rounded-2xl p-6 hidden md:hidden shadow-2xl">
-                <div class="flex flex-col space-y-4 text-center font-bold text-slate-700">
-                    <a href="#home" class="mobile-link py-2 border-b border-slate-100">Home</a>
-                    <a href="#about" class="mobile-link py-2 border-b border-slate-100">Tentang</a>
-                    <a href="#projects" class="mobile-link py-2 border-b border-slate-100">Karya</a>
-                    <a href="#skills" class="mobile-link py-2 border-b border-slate-100">Keahlian</a>
-                </div>
-            </div>
-        </nav>
-    
-        <header id="home" class="pt-40 pb-20 px-6">
-            <div class="max-w-5xl mx-auto text-center">
-                <div class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-1.5 rounded-full text-xs font-bold mb-8 border border-emerald-100 animate-bounce">
-                    Available for Projects
-                </div>
-                <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
-                    Kreativitas Tanpa Batas, <br><span class="text-emerald-600">Bermanfaat</span> Untuk Umat.
-                </h1>
-                <p class="text-slate-500 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                    Menyajikan karya melalui baris kode, narasi literasi, dan estetika desain visual.
+            <div class="w-full md:w-1/2">
+                <h2 class="text-3xl font-extrabold mb-6">Muzanni, S.H.</h2>
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    Seorang antusias teknologi yang percaya bahwa literasi adalah kunci perubahan. Melalui karya tulisan seperti buku <span class="font-bold text-emerald-700">"Pelan-pelan Jadi Baik"</span> dan berbagai aplikasi digital, saya berusaha memberikan solusi yang nyata bagi masyarakat.
                 </p>
-            </div>
-        </header>
-    
-        <section id="about" class="py-20 px-6 bg-white/40">
-            <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-16">
-                <div class="w-full md:w-1/2 relative">
-                    <div class="aspect-[4/5] bg-emerald-600 rounded-[2rem] rotate-3"></div>
-                    <div class="absolute inset-0 aspect-[4/5] bg-slate-200 rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl transform -rotate-3 hover:rotate-0 transition duration-500">
-                        <img src="https://i.guim.co.uk/img/media/bb48935adb69fd6fc2bffb0988399e0d706d9ec0/282_96_4401_3520/master/4401.jpg?width=1200&quality=85&auto=format&fit=max&s=203ecbfc323819200ca83734e0ec5219" alt="Muzanni" class="w-full h-full object-cover">
+                <div class="grid grid-cols-3 gap-4 border-t pt-8 text-center md:text-left">
+                    <div>
+                        <p class="text-2xl font-black text-emerald-600">10+</p>
+                        <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Web Apps</p>
                     </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <h2 class="text-3xl font-extrabold mb-6">Muzanni, S.H.</h2>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        Seorang antusias teknologi yang percaya bahwa literasi adalah kunci perubahan. Melalui karya tulisan seperti buku <span class="font-bold text-emerald-700">"Pelan-pelan Jadi Baik"</span> dan berbagai aplikasi digital, saya berusaha memberikan solusi yang nyata bagi masyarakat.
-                    </p>
-                    <div class="grid grid-cols-3 gap-4 border-t pt-8 text-center md:text-left">
-                        <div>
-                            <p class="text-2xl font-black text-emerald-600">10+</p>
-                            <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Web Apps</p>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-black text-blue-600">6+</p>
-                            <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Books & Ebooks</p>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-black text-purple-600">99%</p>
-                            <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Passion</p>
-                        </div>
+                    <div>
+                        <p class="text-2xl font-black text-blue-600">6+</p>
+                        <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Books & Ebooks</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-black text-purple-600">99%</p>
+                        <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Passion</p>
                     </div>
                 </div>
             </div>
-        </section>
-    
-        <section id="projects" class="py-24 px-6">
-            <div class="max-w-5xl mx-auto">
-                <h2 class="text-3xl font-extrabold mb-12 flex items-center gap-3">
-                    <span class="w-8 h-1 bg-emerald-500 rounded-full"></span> 
-                    Portofolio Karya
-                </h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <div class="group glass p-8 rounded-[2.5rem] card-hover border-b-4 border-emerald-500">
-                        <i class="fa-solid fa-laptop-code text-3xl text-emerald-600 mb-6 block"></i>
-                        <h3 class="text-xl font-bold mb-2 uppercase tracking-tight">Web Development</h3>
-                        <ul class="text-slate-500 text-sm space-y-2">
-                            <li>• Sistem Manajemen Tahfidz</li>
-                            <li>• Website PPDB & Landingpage</li>
-                            <li>• Undangan Digital & Web Jualan</li>
-                            <li>• Web Islami / Blog Islami</li>
-                            <li>• Aplikasi Keuangan</li>
-                            <li>• Portofolio</li>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-extrabold mb-12 flex items-center gap-3">
+                <span class="w-8 h-1 bg-emerald-500 rounded-full"></span> 
+                Portofolio Karya
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="group glass p-8 rounded-[2.5rem] card-hover border-b-4 border-emerald-500">
+                    <i class="fa-solid fa-laptop-code text-3xl text-emerald-600 mb-6 block"></i>
+                    <h3 class="text-xl font-bold mb-2 uppercase tracking-tight">Web Development</h3>
+                    <ul class="text-slate-500 text-sm space-y-2">
+                        <li>• Sistem Manajemen Tahfidz</li>
+                        <li>• Website PPDB & Landingpage</li>
+                        <li>• Undangan Digital & Web Jualan</li>
+                        <li>• Web Islami / Blog Islami</li>
+                        <li>• Aplikasi Keuangan</li>
+                        <li>• Portofolio</li>
+                    </ul>
+                </div>
+
+                <div class="group glass p-8 rounded-[2.5rem] card-hover border-b-4 border-blue-500">
+                    <i class="fa-solid fa-mobile-screen-button text-3xl text-blue-600 mb-6 block"></i>
+                    <h3 class="text-xl font-bold mb-2 uppercase tracking-tight text-blue-900">Smartphone App</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-4">Aplikasi mobile intuitif untuk mempelajari hadits.</p>
+                    <span class="px-4 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-xs font-bold">Aplikasi Hadits Arbain</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 rounded-[3rem] p-10 text-white">
+                <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                    <i class="fa-solid fa-book-open text-emerald-400"></i> Literasi & Publikasi
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div>
+                        <span class="text-emerald-400 text-xs font-bold uppercase tracking-widest block mb-2">Buku Terbit</span>
+                        <h4 class="text-xl font-bold mb-4">Pelan-pelan Jadi Baik</h4>
+                        <div class="h-1 w-20 bg-emerald-500 mb-6"></div>
+                    </div>
+                    <div>
+                        <span class="text-emerald-400 text-xs font-bold uppercase tracking-widest block mb-2">Koleksi E-Book</span>
+                        <ul class="text-slate-300 text-sm space-y-3">
+                            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Menjaga Akidah Saat Akhir Tahun Tiba</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Merawat Iman di Era Digital</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Maksimalkan 10 Hari Awal Zulhijjah</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Buku Ramadhan Planner</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> 15 Wasiat Salaf (Terjemahan)</li>
                         </ul>
                     </div>
-    
-                    <div class="group glass p-8 rounded-[2.5rem] card-hover border-b-4 border-blue-500">
-                        <i class="fa-solid fa-mobile-screen-button text-3xl text-blue-600 mb-6 block"></i>
-                        <h3 class="text-xl font-bold mb-2 uppercase tracking-tight text-blue-900">Smartphone App</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-4">Aplikasi mobile intuitif untuk mempelajari hadits.</p>
-                        <span class="px-4 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-xs font-bold">Aplikasi Hadits Arbain</span>
-                    </div>
-                </div>
-    
-                <div class="bg-slate-900 rounded-[3rem] p-10 text-white">
-                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
-                        <i class="fa-solid fa-book-open text-emerald-400"></i> Literasi & Publikasi
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <div>
-                            <span class="text-emerald-400 text-xs font-bold uppercase tracking-widest block mb-2">Buku Terbit</span>
-                            <h4 class="text-xl font-bold mb-4">Pelan-pelan Jadi Baik</h4>
-                            <div class="h-1 w-20 bg-emerald-500 mb-6"></div>
-                        </div>
-                        <div>
-                            <span class="text-emerald-400 text-xs font-bold uppercase tracking-widest block mb-2">Koleksi E-Book</span>
-                            <ul class="text-slate-300 text-sm space-y-3">
-                                <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Menjaga Akidah Saat Akhir Tahun Tiba</li>
-                                <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Merawat Iman di Era Digital</li>
-                                <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Maksimalkan 10 Hari Awal Zulhijjah</li>
-                                <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Buku Ramadhan Planner</li>
-                                <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> 15 Wasiat Salaf (Terjemahan)</li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </section>
-    
-        <section id="skills" class="py-24 px-6 bg-slate-50 text-center">
-            <div class="max-w-5xl mx-auto">
-                <h2 class="text-3xl font-extrabold mb-16 italic">Creative Toolkit</h2>
-                <div class="flex flex-wrap justify-center gap-8 md:gap-12">
-                    <div class="flex flex-col items-center group">
-                        <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all text-orange-500 text-4xl">
-                            <i class="fa-brands fa-html5"></i>
-                        </div>
-                        <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">HTML</span>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 px-6 bg-slate-50 text-center">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-extrabold mb-16 italic">Creative Toolkit</h2>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+                <div class="flex flex-col items-center group">
+                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all text-orange-500 text-4xl">
+                        <i class="fa-brands fa-html5"></i>
                     </div>
-                    <div class="flex flex-col items-center group">
-                        <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all text-blue-500 text-4xl">
-                            <i class="fa-brands fa-css3-alt"></i>
-                        </div>
-                        <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">CSS</span>
+                    <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">HTML</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all text-blue-500 text-4xl">
+                        <i class="fa-brands fa-css3-alt"></i>
                     </div>
-                    <div class="flex flex-col items-center group">
-                        <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all text-yellow-500 text-4xl">
-                            <i class="fa-brands fa-js"></i>
-                        </div>
-                        <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">JS</span>
+                    <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">CSS</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all text-yellow-500 text-4xl">
+                        <i class="fa-brands fa-js"></i>
                     </div>
-                    <div class="flex flex-col items-center group">
-                        <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all text-orange-400 text-4xl">
-                            <i class="fa-solid fa-fire"></i>
-                        </div>
-                        <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">Firebase</span>
+                    <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">JS</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all text-orange-400 text-4xl">
+                        <i class="fa-solid fa-fire"></i>
                     </div>
-                    <div class="flex flex-col items-center group">
-                        <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all overflow-hidden p-3">
-                            <img src="https://www.imageshop.no/wp-content/uploads/2025/08/6e3d19ed7de6ab8ef4f0db3279ffe551.jpg" alt="Canva" class="w-full h-full object-contain">
-                        </div>
-                        <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">Canva</span>
+                    <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">Firebase</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all overflow-hidden p-3">
+                        <img src="https://www.imageshop.no/wp-content/uploads/2025/08/6e3d19ed7de6ab8ef4f0db3279ffe551.jpg" alt="Canva" class="w-full h-full object-contain">
                     </div>
-                    <div class="flex flex-col items-center group">
-                        <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all overflow-hidden p-3">
-                            <img src="https://i.pinimg.com/736x/0e/6c/67/0e6c671427d62944842106a1fa2573f2.jpg" alt="Pixellab" class="w-full h-full object-contain">
-                        </div>
-                        <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">Pixellab</span>
+                    <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">Canva</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all overflow-hidden p-3">
+                        <img src="https://i.pinimg.com/736x/0e/6c/67/0e6c671427d62944842106a1fa2573f2.jpg" alt="Pixellab" class="w-full h-full object-contain">
                     </div>
-    <div class="flex flex-col items-center group">
-                        <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all overflow-hidden p-3">
-                            <img src="https://www.techspot.com/images2/downloads/topdownload/2025/10/2025-10-30-ts3_thumbs-4ba.png" alt="Affinity" class="w-full h-full object-contain">
-                        </div>
-                        <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">Affinity</span>
+                    <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">Pixellab</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all overflow-hidden p-3">
+                        <img src="https://www.techspot.com/images2/downloads/topdownload/2025/10/2025-10-30-ts3_thumbs-4ba.png" alt="Affinity" class="w-full h-full object-contain">
                     </div>
-                    <div class="flex flex-col items-center group">
-                        <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all text-red-600 text-4xl">
-                            <i class="fa-solid fa-file-word"></i>
-                        </div>
-                        <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">Office</span>
+                    <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">Affinity</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all text-red-600 text-4xl">
+                        <i class="fa-solid fa-file-word"></i>
                     </div>
+                    <span class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-tighter">Office</span>
                 </div>
             </div>
-        </section>
-    
-        <footer class="py-12 px-6 bg-white border-t border-slate-100 text-center">
-            <div class="max-w-5xl mx-auto">
-                <p class="text-slate-400 text-sm italic mb-8">"Sebaik-baik manusia adalah yang paling bermanfaat bagi orang lain."</p>
-                <div class="flex justify-center gap-8 mb-10">
-                    <a href="https://www.instagram.com/muzanni.uce/" class="text-slate-400 hover:text-emerald-600"><i class="fa-brands fa-instagram text-2xl"></i></a>
-                    <a href="https://wa.me/6285251675143" class="text-slate-400 hover:text-emerald-600"><i class="fa-brands fa-whatsapp text-2xl"></i></a>
-                    <a href="#" class="text-slate-400 hover:text-emerald-600"><i class="fa-brands fa-github text-2xl"></i></a>
-                </div>
-                <p class="text-[10px] text-slate-300 tracking-widest">&copy; 2026 Muzanni. All rights reserved.</p>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 bg-white border-t border-slate-100 text-center">
+        <div class="max-w-5xl mx-auto">
+            <p class="text-slate-400 text-sm italic mb-8">"Sebaik-baik manusia adalah yang paling bermanfaat bagi orang lain."</p>
+            <div class="flex justify-center gap-8 mb-10">
+                <a href="https://www.instagram.com/muzanni.uce/" class="text-slate-400 hover:text-emerald-600"><i class="fa-brands fa-instagram text-2xl"></i></a>
+                <a href="javascript:void(0)" onclick="toggleWA()" class="text-slate-400 hover:text-emerald-600"><i class="fa-brands fa-whatsapp text-2xl"></i></a>
+                <a href="#" class="text-slate-400 hover:text-emerald-600"><i class="fa-brands fa-github text-2xl"></i></a>
             </div>
-        </footer>
-    
-        <script>
-            const btn = document.getElementById('menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-        </script>
-    </body>
-    </html>
+            <p class="text-[10px] text-slate-300 tracking-widest">&copy; 2026 Muzanni. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+        // FUNGSI WHATSAPP WIDGET
+        function toggleWA() {
+            const widget = document.getElementById('wa-widget');
+            if (widget.classList.contains('wa-hide')) {
+                widget.classList.remove('wa-hide');
+                widget.classList.add('wa-show');
+            } else {
+                widget.classList.remove('wa-show');
+                widget.classList.add('wa-hide');
+            }
+        }
+
+        function sendWA() {
+            const msg = document.getElementById('wa-msg').value;
+            const phone = "6285251675143";
+            if (msg.trim() === "") {
+                alert("Silakan tulis pesan terlebih dahulu.");
+                return;
+            }
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
